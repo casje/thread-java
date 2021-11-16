@@ -7,13 +7,14 @@ public class Fatorial {
 	public int Calcular(int numero) throws InterruptedException
 	{
 		int resultado = numero;
+		int numeroFatorial = numero;
 		
-		while(numero > 1)
+		while(numeroFatorial > 1)
 		{
 			TimeUnit.MILLISECONDS.sleep(500);
 
-			resultado = resultado * (numero - 1);
-			numero--;
+			resultado = resultado * (numeroFatorial - 1);
+			numeroFatorial--;
 		}
 		
 		System.out.println("Fatorial de " + numero + " é: " + resultado);

@@ -16,13 +16,13 @@ public class Inicial {
 		System.out.println("---------------------------------------------\n"
 				         + "--- Maneira Sequencial\n"
 				         + "---------------------------------------------\n");
-		Sequencial(6);
+		Sequencial(7);
 		
 		
 		System.out.println("\n\n---------------------------------------------\n"
 		                 + "--- Maneira Paralela\n"
 		                 + "---------------------------------------------\n");
-		Paralela(6);
+		Paralela(7);
 	}
 	
 	public static void Sequencial(int numero) throws InterruptedException
@@ -33,7 +33,6 @@ public class Inicial {
 		Fatorial objFatorial = new Fatorial();
 		NumeroPrimo objNumeroPrimo = new NumeroPrimo();
 		NumeroPerfeito objNumeroPerfeito = new NumeroPerfeito();
-		
 		
 		objFatorial.Calcular(numero);		
 		objNumeroPrimo.VerificarSeNumeroEhPrimo(numero);
@@ -46,7 +45,7 @@ public class Inicial {
 	
 	public static void Paralela(int numero) throws InterruptedException
 	{
-		final long inicioSequencial = System.currentTimeMillis();
+		final long inicioParalela = System.currentTimeMillis();
 		System.out.println("Programa para o lab - paralelo");
 		
 		CountDownLatch latch = new CountDownLatch(3);
@@ -63,9 +62,10 @@ public class Inicial {
 		tarefaNumeroPrimo.start();
 		tarefaNumeroPerfeito.start();
 		
+		// aguardando o termino de todas as threads
 		latch.await();
 		
-		final long finalParalela = System.currentTimeMillis() - inicioSequencial;
+		final long finalParalela = System.currentTimeMillis() - inicioParalela;
 		
 		System.out.println("Finalizou o programa paralelo em " + finalParalela + " milissegundos");
 	}
